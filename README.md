@@ -4,6 +4,8 @@
 [![CircleCI](https://circleci.com/gh/honeycombio/beeline-go.svg?style=shield)](https://circleci.com/gh/honeycombio/beeline-go)
 [![GoDoc](https://godoc.org/github.com/honeycombio/beeline-go?status.svg)](https://godoc.org/github.com/honeycombio/beeline-go)
 
+⚠️**Note**: Beelines are Honeycomb's legacy instrumentation libraries. We embrace OpenTelemetry as the effective way to instrument applications. For any new observability efforts, we recommend [instrumenting with OpenTelemetry](https://docs.honeycomb.io/send-data/go/opentelemetry-sdk/).
+
 This package makes it easy to instrument your Go app to send useful events to [Honeycomb](https://www.honeycomb.io), a service for debugging your software in production.
 - [Usage and Examples](https://docs.honeycomb.io/getting-data-in/beelines/go-beeline/)
 - [API Reference](https://godoc.org/github.com/honeycombio/beeline-go)
@@ -11,7 +13,7 @@ This package makes it easy to instrument your Go app to send useful events to [H
 
 ## Dependencies
 
-Golang 1.14+
+Golang 1.19+
 
 ## Contributions
 
