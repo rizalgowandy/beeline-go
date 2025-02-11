@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/rand"
 	"encoding/hex"
+	"runtime/pprof"
 	"sync"
 	"time"
 
@@ -27,6 +28,9 @@ type Config struct {
 	// PresendHook is a function to mutate spans just before they are sent to
 	// Honeycomb. See the docs for `beeline.Config` for a full description.
 	PresendHook func(map[string]interface{})
+
+	// PprofTagging controls whether span IDs should be propagated to pprof.
+	PprofTagging bool
 }
 
 // Trace holds some trace level state and the root of the span tree that will be
@@ -176,7 +180,7 @@ func (t *Trace) getTraceLevelFields() map[string]interface{} {
 	t.tlfLock.Lock()
 	defer t.tlfLock.Unlock()
 	// return a copy of trace level fields
-	retVals := make(map[string]interface{})
+	retVals := make(map[string]interface{}, len(t.traceLevelFields))
 	for k, v := range t.traceLevelFields {
 		retVals[k] = v
 	}
@@ -186,7 +190,7 @@ func (t *Trace) getTraceLevelFields() map[string]interface{} {
 func (t *Trace) getRollupFields() map[string]interface{} {
 	t.rollupLock.Lock()
 	defer t.rollupLock.Unlock()
-	rollupFields := make(map[string]interface{})
+	rollupFields := make(map[string]interface{}, len(t.rollupFields))
 	for k, v := range t.rollupFields {
 		rollupFields[k] = v
 	}
@@ -238,6 +242,7 @@ type Span struct {
 	trace        *Trace
 	eventLock    sync.Mutex
 	sendLock     sync.RWMutex
+	oldCtx       *context.Context
 }
 
 // newSpan takes care of *some* of the initialization necessary to create a new
@@ -255,7 +260,7 @@ func newSpan() *Span {
 // AddField adds a key/value pair to this span
 //
 // Errors are treated as a special case for convenience: if `val` is of type
-// `error` then the key is set to the error's message in the span.
+// `error` then the field's value is set to the error's message.
 func (s *Span) AddField(key string, val interface{}) {
 	// The call to event's AddField is protected by a lock, but this is not always sufficient
 	// See send for why this lock exists
@@ -377,6 +382,10 @@ func (s *Span) sendLocked() {
 		s.parent.removeChildSpan(s)
 	}
 
+	// Restore pprof labels from before this span was created, if any were saved.
+	if s.oldCtx != nil {
+		pprof.SetGoroutineLabels(*s.oldCtx)
+	}
 }
 
 // IsAsync reveals whether the span is asynchronous (true) or synchronous (false).

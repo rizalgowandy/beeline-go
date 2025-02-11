@@ -1,5 +1,214 @@
 # beeline-go changelog
 
+## 1.18.0 2024-11-22
+
+### Maintenance
+
+- docs: update vulnerability reporting process (#442) | @robbkidd
+- maint: Update libhoney-go to 1.24.0 (#446) | @MikeGoldsmith
+- maint: Update README.md (#441) | @codeboten
+- maint(build): add 1.23 to supported versions (#445) | @lizthegrey
+- maint(deps): bump golang.org/x/net from 0.20.0 to 0.23.0 (#436) | @dependabot
+
+## 1.17.0 2024-06-13
+
+### Maintenance
+
+- maint: bump libhoney-go to v1.23.0 (#439) | @MikeGoldsmith
+- maint: Add golang 1.22 to test matrix (#435) | @MikeGoldsmith
+
+## 1.16.0 2024-04-05
+
+### ⚠️ Breaking Changes ⚠️
+
+Minimum Go version required is 1.19
+
+### Maintenance
+
+- maint: drop go 1.18 (#432) | @codeboten
+- maint: group patch updates for go deps (#430) | @codeboten
+- maint: add labels to release.yml for auto-generated grouping (#426) | @JamieDanielson
+- maint(deps): bump the minor-patch group with 4 updates (#431) | @dependabot
+- maint(deps): bump the minor-patch group with 1 update (#433) | @dependabot
+
+## 1.15.0 2024-03-04
+
+### Enhacements
+
+- feat: support classic Ingest Keys (#421) | @jharley
+
+### Maintenance
+
+- maint: update codeowners to pipeline-team (#410) | @JamieDanielson
+- maint: update codeowners to pipeline (#409) | @JamieDanielson
+- maint(deps): bump google.golang.org/protobuf from 1.31.0 to 1.32.0 (#419) | @dependabot
+- maint(deps): bump github.com/google/uuid from 1.5.0 to 1.6.0 (#420) | @dependabot
+- maint(deps): bump github.com/DATA-DOG/go-sqlmock from 1.5.0 to 1.5.2 (#417) | @dependabot
+- maint(deps): bump github.com/labstack/echo/v4 from 4.11.3 to 4.11.4 (#414) | @dependabot
+- maint(deps): bump github.com/google/uuid from 1.4.0 to 1.5.0 (#413) | @dependabot
+
+## 1.14.0 2023-12-04
+
+### Enhancements
+
+- perf: speed up adding fields, reduce memalloc if field name is already prefixed with "app." (#406) | @robbkidd
+
+### Maintenance
+
+- maint(deps): bump github.com/labstack/echo/v4 from 4.11.1 to 4.11.3 (#403) | @dependabot
+- maint(deps): bump golang.org/x/net from 0.12.0 to 0.17.0 (#396) | @dependabot
+- maint(deps): bump github.com/google/uuid from 1.3.0 to 1.4.0 (#398) | @dependabot
+- maint(deps): bump github.com/felixge/httpsnoop from 1.0.3 to 1.0.4 (#408) | @dependabot
+- maint(deps): bump github.com/gorilla/mux from 1.8.0 to 1.8.1 (#407) | @dependabot
+
+## 1.13.0 2023-07-31
+
+### ⚠️ Breaking Changes ⚠️
+
+Minimum Go version required is 1.18
+
+### Maintenance
+
+- maint: drop go 1.17 (#390) | @vreynolds
+- ci: move nightly to weekly (#389) | @vreynolds
+- maint(deps): bump github.com/labstack/echo/v4 from 4.10.2 to 4.11.1 (#392) | @dependabot
+- maint(deps): [examples] bump google.golang.org/protobuf from 1.30.0 to 1.31.0 (#386) | @dependabot
+- maint(deps): bump google.golang.org/grpc from 1.55.0 to 1.57.0 (#391) | @dependabot
+- maint(deps): bump github.com/gin-gonic/gin from 1.9.0 to 1.9.1 (#382) | @dependabot
+- maint(deps): bump github.com/honeycombio/libhoney-go from 1.19.0 to 1.20.0 (#387) | @dependabot
+
+## 1.12.0 2023-06-05
+
+### ⚠️ Breaking Changes ⚠️
+
+Minimum Go version required is 1.17
+
+### Maintenance
+
+- Bump libhoney-go to 1.19.0 (#385) | @MikeGoldsmith
+- Bump google.golang.org/grpc from 1.49.0 to 1.55.0 (#380) | @Dependabot
+- Bump github.com/stretchr/testify from 1.8.2 to 1.8.4 (#381) | @Dependabot
+- Bump github.com/gin-gonic/gin from 1.8.1 to 1.9.0 (#373) | @Dependabot
+- Bump github.com/go-sql-driver/mysql from 1.7.0 to 1.7.1 (#379) | @Dependabot
+- Bump github.com/stretchr/testify from 1.8.1 to 1.8.2 (#372) | @Dependabot
+- Bump github.com/labstack/echo/v4 from 4.9.0 to 4.10.2 (#371) | @Dependabot
+- Bump github.com/gobuffalo/pop/v6 from 6.0.8 to 6.1.1 (#368) | @Dependabot
+- Bump github.com/stretchr/testify from 1.8.0 to 1.8.1 (#359) | @Dependabot
+- Bump github.com/honeycombio/libhoney-go from 1.17.1 to 1.18.0 (#358) | @Dependabot
+
+## 1.11.1 2022-10-19
+
+### Fixes
+
+- Pre-define capacities for rollups and TLFs (#353) | [@lizthegrey](https://github.com/lizthegrey)
+
+### Maintenance
+
+- Bump libhoney to 1.17.1 (#355) | [@mikegoldsmith](https://github.com/mikegoldsmith)
+- Add release file (#354) | [@vreynolds](https://github.com/vreynolds)
+
+## 1.11.0 2022-10-11
+
+### Enhancements
+
+- Include Commit/Rollback in db.call names (#345) | [@glenjamin](https://github.com/glenjamin)
+
+### Maintenance
+
+- [maint] Drop support for go 1.16 (#350) | [@pkanal](https://github.com/pkanal)
+- Bump github.com/honeycombio/libhoney-go from 1.16.0 to 1.17.0 (#347) | [@dependabot](https://github.com/dependabot)
+- Bump github.com/labstack/echo/v4 from 4.8.0 to 4.9.0 (#346) | [@dependabot](https://github.com/dependabot)
+- Bump github.com/labstack/echo/v4 from 4.7.2 to 4.8.0 (#343) | [@dependabot](https://github.com/dependabot)
+- Bump google.golang.org/grpc from 1.48.0 to 1.49.0 (#344) | [@dependabot](https://github.com/dependabot)
+
+## 1.10.0 2022-08-24
+
+### Enhancements
+
+- Add more request header information to GRPC handler spans (#341) | [@robbkidd](https://github.com/robbkidd)
+  - `request.header.x_forwarded_for`
+  - `request.header.x_forwarded_proto`
+  - `request.remote_addr`
+
+### Maintenance
+
+- maint: add go 1.19 to CI (#340) | [@vreynolds](https://github.com/vreynolds)
+- Downgrade go-sqlite3 to stable version (#338) | [@malt3](https://github.com/malt3)
+- Bump google.golang.org/grpc from 1.47.0 to 1.48.0 (#333) | [@dependabot](https://github.com/dependabot)
+- Bump github.com/gin-gonic/gin from 1.7.7 to 1.8.1 (#330) | [@dependabot](https://github.com/dependabot)
+- Bump github.com/gobuffalo/pop/v6 from 6.0.4 to 6.0.6 (#335) | [@dependabot](https://github.com/dependabot)
+- Bump github.com/honeycombio/libhoney-go from 1.15.8 to 1.16.0 (#334) | [@dependabot](https://github.com/dependabot)
+- Bump github.com/stretchr/testify from 1.7.1 to 1.8.0 (#332) | [@dependabot](https://github.com/dependabot)
+- [examples] Bump google.golang.org/protobuf from 1.28.0 to 1.28.1 (#336) | [@dependabot](https://github.com/dependabot)
+
+## 1.9.0 2022-07-01
+
+### Enhancements
+
+- Use simple concat for prepending "app." field prefix (#328) | [@lizthegrey](https://github.com/lizthegrey)
+
+### Maintenance
+
+- Bump github.com/gobuffalo/pop/v6 from 6.0.2 to 6.0.4 (#326)
+- Bump github.com/felixge/httpsnoop from 1.0.2 to 1.0.3 (#324)
+- Bump google.golang.org/grpc from 1.45.0 to 1.47.0 (#325)
+- Bump github.com/jmoiron/sqlx from 1.3.4 to 1.3.5 (#321)
+- Bump github.com/gobuffalo/pop/v6 from 6.0.1 to 6.0.2 (#323)
+
+## 1.8.0 2022-04-04
+
+### !!! Note !!!
+
+Minimum Go version required is now 1.16.
+
+### Maintenance
+
+* Update gobuffalo/pop from v5 to v6, which uses features introduced in Go version 1.16.
+* Update google.golang.org/protobuf from 1.26.0 to 1.28.0.
+* Update google.golang.org/grpc from 1.43.0 to 1.45.0.
+* Update labstack/echo from 4.6.1 to 4.7.2.
+* Remove support for Go 1.14 and 1.15.
+* Add support for Go 1.18.
+
+## v1.7.0 2022-03-03
+
+### Enhancements
+
+- Add Environment & Services support (#309) | [@JamieDanielson](https://github.com/JamieDanielson)
+
+## 1.6.0 2022-02-10
+
+### Enhancements
+
+- feat: pass process root span id as pprof profile id tag (#305) | [@lizthegrey](https://github.com/lizthegrey)
+
+## Fixes
+
+- fix: preserve previous pprof labels after span end (#306) | [@lizthegrey](https://github.com/lizthegrey)
+
+## 1.5.1 2022-02-02
+
+### Enhancements
+
+- Add RebindContext method to Tx struct (#303) | [@paulosman](https://github.com/paulosman)
+
+## 1.5.0 2022-02-02
+
+### Enhancements
+
+- Add a RebindContext method to hnysqlx.DB wrapper (#301) | [@paulosman](https://github.com/paulosman)
+
+### Maintenance
+
+- Bump google.golang.org/grpc from 1.42.0 to 1.43.0 (#296)
+
+## v1.4.1 2022-01-05
+
+### Maintenance
+
+- Bump libhoney-go to v1.15.8 (#297) | [@mikegoldsmith](https://github.com/mikegoldsmith)
+- Add re-triage workflow (#295) | [@vreynolds](https://github.com/vreynolds)
+
 ## v1.4.0 2021-12-22
 
 ### Improvements

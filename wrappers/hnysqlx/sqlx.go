@@ -801,6 +801,24 @@ func (db *DB) Rebind(query string) string {
 	return str
 }
 
+// not implemented in the wrapper, but provides an API that allows us to include
+// Rebind calls in the provided trace context.
+func (db *DB) RebindContext(ctx context.Context, query string) string {
+	var err error
+	ctx, _, sender := common.BuildDBSpan(ctx, db.Builder, db.Stats(), query)
+	defer func() {
+		sender(err)
+	}()
+
+	// ensure any changes to the Mapper get passed along
+	if db.Mapper != nil {
+		db.wdb.Mapper = db.Mapper
+	}
+
+	str := db.wdb.Rebind(query)
+	return str
+}
+
 func (db *DB) Select(dest interface{}, query string, args ...interface{}) error {
 	var err error
 	ev, sender := common.BuildDBEvent(db.Builder, db.Stats(), query, args...)
@@ -2135,6 +2153,22 @@ func (tx *Tx) QueryxContext(ctx context.Context, query string, args ...interface
 func (tx *Tx) Rebind(query string) string {
 	var err error
 	_, sender := common.BuildDBEvent(tx.Builder, tx.db.Stats(), query)
+	defer func() {
+		sender(err)
+	}()
+
+	// ensure any changes to the Mapper get passed along
+	if tx.Mapper != nil {
+		tx.wtx.Mapper = tx.Mapper
+	}
+
+	str := tx.wtx.Rebind(query)
+	return str
+}
+
+func (tx *Tx) RebindContext(ctx context.Context, query string) string {
+	var err error
+	ctx, _, sender := common.BuildDBSpan(ctx, tx.Builder, tx.db.Stats(), query)
 	defer func() {
 		sender(err)
 	}()
